@@ -11,6 +11,7 @@ Public-release safety fixes from pre-publish review.
 - Git `repoRoot` must resolve under `allowedRoots` when roots are set
 - Empty `allowedRoots` is fail-closed (no path deletes)
 - Regenerated `package-lock.json` with npm 10 so GitHub Actions `npm ci` stays in sync (`@emnapi/*`)
+- Path-boundary validation tests use OS-neutral temp paths (Windows drive letters broke Linux/macOS CI)
 
 ### Changed
 

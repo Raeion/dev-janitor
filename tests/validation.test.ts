@@ -1,3 +1,5 @@
+import path from 'node:path';
+import os from 'node:os';
 import { describe, expect, it } from 'vitest';
 import {
   isPathAllowed,
@@ -7,6 +9,11 @@ import {
 } from '../src/utils/validation.js';
 import { executeClean } from '../src/execution.js';
 import { pathFinding } from './helpers.js';
+
+const allowedRoot = path.join(os.tmpdir(), 'dj-allowed-root');
+const nestedPath = path.join(allowedRoot, 'app', 'node_modules');
+const outsidePath = path.join(os.tmpdir(), 'dj-outside-root', 'node_modules');
+const outsideRepo = path.join(os.tmpdir(), 'dj-outside-repo');
 
 describe('validation', () => {
   it('accepts safe git branch names', () => {
@@ -23,28 +30,28 @@ describe('validation', () => {
     const error = validateFindingForDelete(
       pathFinding({
         cleaner: 'node-modules',
-        path: 'C:\\outside\\node_modules',
+        path: outsidePath,
         sizeBytes: 1,
         risk: 'low',
         description: 'x',
       }),
-      ['C:\\inside'],
+      [allowedRoot],
     );
     expect(error).toMatch(/outside scan root/i);
   });
 
   it('allows path equal to an allowed root', () => {
-    expect(isPathAllowed('C:\\inside', ['C:\\inside'])).toBe(true);
-    expect(isPathAllowed('C:\\inside\\app\\node_modules', ['C:\\inside'])).toBe(true);
-    expect(isPathAllowed('C:\\outside', ['C:\\inside'])).toBe(false);
+    expect(isPathAllowed(allowedRoot, [allowedRoot])).toBe(true);
+    expect(isPathAllowed(nestedPath, [allowedRoot])).toBe(true);
+    expect(isPathAllowed(outsidePath, [allowedRoot])).toBe(false);
   });
 
   it('fail-closes when allowedRoots is empty', () => {
-    expect(isPathAllowed('C:\\inside\\app', [])).toBe(false);
+    expect(isPathAllowed(nestedPath, [])).toBe(false);
     const error = validateFindingForDelete(
       pathFinding({
         cleaner: 'node-modules',
-        path: 'C:\\inside\\node_modules',
+        path: nestedPath,
         sizeBytes: 1,
         risk: 'low',
         description: 'x',
@@ -60,17 +67,17 @@ describe('validation', () => {
         {
           kind: 'git-branch',
           cleaner: 'git-stale-branches',
-          path: 'repo :: evil',
+          path: `${allowedRoot} :: evil`,
           sizeBytes: 0,
           risk: 'high',
           description: 'bad',
-          repoRoot: 'C:\\repo',
+          repoRoot: allowedRoot,
           resourceId: 'evil;drop',
         },
       ],
       force: true,
       dryRun: false,
-      allowedRoots: ['C:\\repo'],
+      allowedRoots: [allowedRoot],
     });
 
     expect(result.deleted).toHaveLength(0);
@@ -82,14 +89,14 @@ describe('validation', () => {
       {
         kind: 'git-branch',
         cleaner: 'git-stale-branches',
-        path: 'C:\\other :: feature',
+        path: `${outsideRepo} :: feature`,
         sizeBytes: 0,
         risk: 'high',
         description: 'branch',
-        repoRoot: 'C:\\other',
+        repoRoot: outsideRepo,
         resourceId: 'feature',
       },
-      ['C:\\inside'],
+      [allowedRoot],
     );
     expect(error).toMatch(/outside scan root/i);
   });
@@ -99,20 +106,20 @@ describe('validation', () => {
       {
         kind: 'git-branch',
         cleaner: 'git-stale-branches',
-        path: 'C:\\inside :: feature',
+        path: `${allowedRoot} :: feature`,
         sizeBytes: 0,
         risk: 'high',
         description: 'branch',
-        repoRoot: 'C:\\inside',
+        repoRoot: allowedRoot,
         resourceId: 'feature',
       },
-      ['C:\\inside'],
+      [allowedRoot],
     );
     expect(error).toBeUndefined();
   });
 
   it('allows paths inside allowed roots', () => {
-    expect(isPathAllowed('C:\\inside\\app\\node_modules', ['C:\\inside'])).toBe(true);
-    expect(isPathAllowed('C:\\outside', ['C:\\inside'])).toBe(false);
+    expect(isPathAllowed(nestedPath, [allowedRoot])).toBe(true);
+    expect(isPathAllowed(outsidePath, [allowedRoot])).toBe(false);
   });
 });
