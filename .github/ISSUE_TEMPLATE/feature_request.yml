@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest a new cleaner or CLI improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What developer debris or workflow should Dev Janitor handle?
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Cleaner scope (if applicable)
+      options:
+        - filesystem
+        - git-repo
+        - global
+        - CLI / other
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true

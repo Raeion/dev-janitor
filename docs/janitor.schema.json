@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/iamir/dev-janitor/docs/janitor.schema.json",
+  "title": "Dev Janitor configuration",
+  "description": "Configuration for the Dev Janitor CLI (.janitorrc, janitor.config.js, etc.)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "ignore": {
+      "type": "array",
+      "description": "Micromatch globs relative to the scan root. Matching paths are skipped.",
+      "items": { "type": "string", "minLength": 1 },
+      "default": []
+    },
+    "cleaners": {
+      "type": "array",
+      "description": "Built-in cleaner names to run. Omitted or empty runs all cleaners.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "node-modules",
+          "python-cache",
+          "python-venv",
+          "os-junk",
+          "ds-store",
+          "build-artifacts",
+          "tooling-caches",
+          "java-gradle",
+          "git-stale-branches",
+          "docker-resources",
+          "package-caches"
+        ]
+      },
+      "default": []
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["filesystem", "git", "global", "all"],
+      "default": "filesystem"
+    },
+    "minAgeDays": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "protectedBranches": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "default": []
+    },
+    "gitFetch": {
+      "type": "boolean",
+      "description": "Run git fetch --prune before scanning merged branches.",
+      "default": false
+    }
+  }
+}

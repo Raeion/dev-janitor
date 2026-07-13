@@ -1,0 +1,70 @@
+{
+  "name": "dev-janitor",
+  "version": "1.2.1",
+  "description": "Local environment janitor CLI that safely scans and cleans developer debris like node_modules",
+  "type": "module",
+  "bin": {
+    "dj": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "lint": "eslint src tests",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "audit": "npm audit --audit-level=high",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "cleanup",
+    "node_modules",
+    "developer-tools",
+    "janitor",
+    "disk-space"
+  ],
+  "author": "wordrae (@wordrae)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamir/dev-janitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamir/dev-janitor/issues"
+  },
+  "homepage": "https://github.com/iamir/dev-janitor#readme",
+  "dependencies": {
+    "commander": "^15.0.0",
+    "cosmiconfig": "^9.0.2",
+    "enquirer": "^2.4.1",
+    "micromatch": "^4.0.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/micromatch": "^4.0.10",
+    "@types/node": "^26.1.1",
+    "eslint": "^10.7.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.10"
+  }
+}
