@@ -69,7 +69,7 @@ Restore notes and cleaner details: [docs/cleaners.md](./docs/cleaners.md)
 npm install -g dev-janitor
 ```
 
-**Requirements:** Node.js 18 or newer. Optional: `git` and `docker` on PATH for Git and Docker cleaners.
+**Requirements:** Node.js 22.12 or newer. Optional: `git` and `docker` on PATH for Git and Docker cleaners.
 
 ### From source
 
@@ -236,7 +236,7 @@ if (result.findings.length > 0) {
 
 ## How it is built
 
-TypeScript ESM CLI on Node 18+. Cosmiconfig for `.janitorrc`. Plug-in cleaners via a discriminated union by scope. Cross-platform (Linux / Windows / macOS). MIT licensed, on npm as `dev-janitor`.
+TypeScript ESM CLI on Node 22.12+. Cosmiconfig for `.janitorrc`. Plug-in cleaners via a discriminated union by scope. Cross-platform (Linux / Windows / macOS). MIT licensed, on npm as `dev-janitor`.
 
 Architecture in short: CLI → config → cleaner registry → scan orchestrator (filesystem + repo + global) → confirm → delete by finding kind.
 

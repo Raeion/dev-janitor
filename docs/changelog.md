@@ -10,10 +10,14 @@ Public-release safety fixes from pre-publish review.
 - CLI `allowedRoots` includes the user home directory so `package-caches` can delete under `$HOME`
 - Git `repoRoot` must resolve under `allowedRoots` when roots are set
 - Empty `allowedRoots` is fail-closed (no path deletes)
+- Regenerated `package-lock.json` with npm 10 so GitHub Actions `npm ci` stays in sync (`@emnapi/*`)
 
 ### Changed
 
 - Repository URLs point to `https://github.com/Raeion/dev-janitor`
+- Node engines raised to `>=22.12.0` (matches `commander@15` and current lint/test toolchain)
+- CI matrix is Node 22 and 24 (dropped 18 and 20)
+- Pinned `packageManager` to `npm@10.9.2`
 
 ## v1.2.0 (2026-07-13)
 
