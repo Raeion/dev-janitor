@@ -1,7 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { scan } from '../src/scan-orchestrator.js';
-import { dockerResourcesCleaner } from '../src/cleaners/docker-resources.js';
+import type { GlobalCleaner } from '../src/types.js';
 import { createFixture } from './helpers.js';
+
+const fakeGlobalCleaner: GlobalCleaner = {
+  name: 'fake-global',
+  description: 'Test global cleaner with no CLI dependency',
+  risk: 'low',
+  scope: 'global',
+  requiresCli: [],
+  async scanGlobal() {
+    return [];
+  },
+};
 
 describe('scan orchestrator scope', () => {
   it('skips filesystem walk when scope is global', async () => {
@@ -11,7 +22,7 @@ describe('scan orchestrator scope', () => {
 
     const result = await scan({
       rootPath: root,
-      cleaners: [dockerResourcesCleaner],
+      cleaners: [fakeGlobalCleaner],
       ignore: [],
       scope: 'global',
     });
