@@ -1,6 +1,6 @@
 # Dev Janitor
 
-[![CI](https://github.com/iamir/dev-janitor/actions/workflows/ci.yml/badge.svg)](https://github.com/iamir/dev-janitor/actions/workflows/ci.yml)
+[![CI](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml/badge.svg)](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![npm version](https://img.shields.io/npm/v/dev-janitor.svg)](https://www.npmjs.com/package/dev-janitor)
 [![Node](https://img.shields.io/node/v/dev-janitor)](https://nodejs.org)
@@ -74,7 +74,7 @@ npm install -g dev-janitor
 ### From source
 
 ```bash
-git clone https://github.com/iamir/dev-janitor.git
+git clone https://github.com/Raeion/dev-janitor.git
 cd dev-janitor
 npm install
 npm run build

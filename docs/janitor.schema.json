@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/iamir/dev-janitor/docs/janitor.schema.json",
+  "$id": "https://github.com/Raeion/dev-janitor/docs/janitor.schema.json",
   "title": "Dev Janitor configuration",
   "description": "Configuration for the Dev Janitor CLI (.janitorrc, janitor.config.js, etc.)",
   "type": "object",

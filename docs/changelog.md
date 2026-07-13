@@ -11,6 +11,10 @@ Public-release safety fixes from pre-publish review.
 - Git `repoRoot` must resolve under `allowedRoots` when roots are set
 - Empty `allowedRoots` is fail-closed (no path deletes)
 
+### Changed
+
+- Repository URLs point to `https://github.com/Raeion/dev-janitor`
+
 ## v1.2.0 (2026-07-13)
 
 A+ hardening release: security, performance, polyglot coverage, lean dependencies.

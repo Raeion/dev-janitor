@@ -7,7 +7,7 @@ Maintainer: **wordrae**: [@wordrae on X](https://x.com/wordrae)
 ## Development setup
 
 ```bash
-git clone https://github.com/iamir/dev-janitor.git
+git clone https://github.com/Raeion/dev-janitor.git
 cd dev-janitor
 npm install
 npm test

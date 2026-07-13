@@ -19,7 +19,7 @@ git init
 git add .
 git commit -m "feat: Dev Janitor v1.0.1 production CLI release"
 git branch -M main
-git remote add origin https://github.com/iamir/dev-janitor.git
+git remote add origin https://github.com/Raeion/dev-janitor.git
 git push -u origin main
 ```
 
