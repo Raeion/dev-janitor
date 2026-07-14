@@ -13,6 +13,7 @@ Public-release safety fixes from pre-publish review.
 - Regenerated `package-lock.json` with npm 10 so GitHub Actions `npm ci` stays in sync (`@emnapi/*`)
 - Path-boundary validation tests use OS-neutral temp paths (Windows drive letters broke Linux/macOS CI)
 - Global-scope orchestrator test no longer depends on Docker being on PATH (Windows CI timeout)
+- CI workflow exposes a single aggregate `CI` job for branch protection status checks
 
 ### Changed
 

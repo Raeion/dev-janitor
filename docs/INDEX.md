@@ -10,7 +10,7 @@ Manifest of Dev Janitor project docs. Keep this file updated when you add or ren
 | [api.md](./api.md) | Programmatic API and JSON contract |
 | [janitor.schema.json](./janitor.schema.json) | JSON Schema for config files |
 | [changelog.md](./changelog.md) | Release and change history |
-| [publishing.md](./publishing.md) | Maintainer release and npm publish checklist |
+| [publishing.md](./publishing.md) | Maintainer release checklist, branch protection, npm publish |
 
 Related root docs:
 

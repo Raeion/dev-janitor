@@ -2,6 +2,19 @@
 
 Manifest for maintainers shipping Dev Janitor to GitHub and npm.
 
+## Branch protection
+
+`main` is protected by an active repository ruleset:
+
+- Target: `refs/heads/main`
+- No force-push / non-fast-forward updates
+- No branch deletion
+- Pull requests required before merge
+- Required status check: **CI** (aggregate job in `.github/workflows/ci.yml`)
+- Repository admins may bypass for emergencies
+
+Do not disable the ruleset without replacing equivalent protections.
+
 ## Pre-push (local)
 
 - [ ] `npm run build` passes
