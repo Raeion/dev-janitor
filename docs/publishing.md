@@ -62,7 +62,8 @@ npm publish --access public
 
 - [ ] Verify [npm package page](https://www.npmjs.com/package/dev-janitor)
 - [ ] Verify GitHub Release notes
-- [ ] Verify CI badge on README is green
+- [ ] Verify CI badge on README is green (`?branch=main`)
+- [ ] After first npm publish, optionally switch the version badge back to `img.shields.io/npm/v/dev-janitor`
 - [ ] Smoke test: `npx dev-janitor scan .`
 
 ## Related docs

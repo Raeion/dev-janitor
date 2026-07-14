@@ -1,9 +1,9 @@
 # Dev Janitor
 
-[![CI](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml/badge.svg)](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml)
+[![CI](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Raeion/dev-janitor/actions/workflows/ci.yml?query=branch%3Amain)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/dev-janitor.svg)](https://www.npmjs.com/package/dev-janitor)
-[![Node](https://img.shields.io/node/v/dev-janitor)](https://nodejs.org)
+[![Version](https://img.shields.io/badge/version-1.2.1-blue.svg)](https://github.com/Raeion/dev-janitor/blob/main/package.json)
+[![Node](https://img.shields.io/badge/node-%3E%3D22.12-brightgreen.svg)](https://nodejs.org)
 
 **Dev Janitor** is a local disk janitor for developers. One CLI (`dj`) that finds the junk you leave behind across projects, tells you how much space you get back, and only deletes when you say yes.
 
